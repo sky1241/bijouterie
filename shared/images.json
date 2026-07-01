@@ -1,0 +1,51 @@
+{
+  "_note": "URLs CDN vérifiées 200 + image/* + inspectées visuellement. Portrait 800x1000 cartes produit, 1600x900 hero, 1200x800 boutique/artisan. 5/catégorie.",
+  "colliers": [
+    "https://images.unsplash.com/photo-1635767798638-3e25273a8236?w=800&h=1000&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1685970731571-72ede0cb26ea?w=800&h=1000&fit=crop&q=80",
+    "https://images.pexels.com/photos/20838859/pexels-photo-20838859.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/7514818/pexels-photo-7514818.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/13924051/pexels-photo-13924051.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop"
+  ],
+  "bracelets": [
+    "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?w=800&h=1000&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=800&h=1000&fit=crop&q=80",
+    "https://images.pexels.com/photos/32874211/pexels-photo-32874211.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/37485307/pexels-photo-37485307.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/14509640/pexels-photo-14509640.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop"
+  ],
+  "bagues": [
+    "https://images.pexels.com/photos/31087451/pexels-photo-31087451.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/32988751/pexels-photo-32988751.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=800&h=1000&fit=crop&q=80",
+    "https://images.pexels.com/photos/2849742/pexels-photo-2849742.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/15351782/pexels-photo-15351782.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop"
+  ],
+  "boucles": [
+    "https://images.pexels.com/photos/10976654/pexels-photo-10976654.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/32989030/pexels-photo-32989030.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=800&h=1000&fit=crop&q=80",
+    "https://images.pexels.com/photos/8396318/pexels-photo-8396318.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/36772547/pexels-photo-36772547.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop"
+  ],
+  "montres": [
+    "https://images.unsplash.com/photo-1548169874-53e85f753f1e?w=800&h=1000&fit=crop&q=80",
+    "https://images.unsplash.com/photo-1587925358603-c2eea5305bbc?w=800&h=1000&fit=crop&q=80",
+    "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/5058216/pexels-photo-5058216.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop",
+    "https://images.pexels.com/photos/3419331/pexels-photo-3419331.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop"
+  ],
+  "hero": [
+    "https://images.pexels.com/photos/7167035/pexels-photo-7167035.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop",
+    "https://images.pexels.com/photos/33737462/pexels-photo-33737462.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop",
+    "https://images.pexels.com/photos/29043373/pexels-photo-29043373.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop"
+  ],
+  "boutique": [
+    "https://images.pexels.com/photos/33257665/pexels-photo-33257665.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.pexels.com/photos/31301818/pexels-photo-31301818.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
+  ],
+  "artisan": [
+    "https://images.pexels.com/photos/7167002/pexels-photo-7167002.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop",
+    "https://images.unsplash.com/photo-1772442125263-c9dd28bbd938?w=1200&h=800&fit=crop&q=80"
+  ]
+}

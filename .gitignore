@@ -1,0 +1,18 @@
+# Ressource design locale (référence, pas livrable client)
+ux_resources/
+
+# OS / éditeur
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# deps / build
+node_modules/
+dist/
+.env
+.env.local
+
+# outils internes (pas du projet)
+.muninn/
+.claude/
