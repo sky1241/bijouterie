@@ -70,6 +70,8 @@
 /* bouton toggle thème (flottant, visible partout) */
 .theme-toggle { position: fixed; bottom: 20px; right: 20px; z-index: var(--z-sticky); width: 44px; height: 44px; border-radius: var(--radius-pill); border: 1px solid var(--color-border-strong); background: var(--color-surface-1); color: var(--color-ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); transition: color var(--dur-hover) var(--ease-out), border-color var(--dur-hover) var(--ease-out), background var(--dur-hover) var(--ease-out); }
 .theme-toggle:hover { color: var(--color-gold-strong); border-color: var(--color-gold); }
+/* fondu doux au changement de thème (classe posée 500ms au clic) */
+html.theme-anim, html.theme-anim *, html.theme-anim *::before, html.theme-anim *::after { transition: background-color .45s var(--ease-out), color .45s var(--ease-out), border-color .45s var(--ease-out), fill .45s var(--ease-out) !important; }
 
 /* ------------------------------ RESET / BASE ------------------------------ */
 *, *::before, *::after { box-sizing: border-box; }
@@ -197,6 +199,10 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
 .hero__services li::before { content: "◆"; color: var(--color-gold); font-size: .6em; }
 .hero__cats { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: clamp(1rem, 3vh, 2rem); }
 .hero__cta { display: flex; flex-wrap: wrap; gap: var(--space-3); justify-content: center; margin-top: var(--space-6); }
+.hero__trust { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); justify-content: center; margin: var(--space-5) 0 0; padding: 0; }
+.hero__trust li { font-size: var(--fs-caption); letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.88); display: inline-flex; align-items: center; gap: var(--space-3); }
+.hero__trust li:not(:first-child)::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--color-gold); }
+@media (max-height: 720px) { .hero__trust { display: none; } }
 
 /* ------------------------------ VUE CATÉGORIE (5 produits, no-scroll) ------------------------------ */
 .product-row { flex: 1 1 auto; min-height: 0; display: flex; gap: clamp(.75rem, 1.5vw, 1.5rem); }

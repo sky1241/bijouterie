@@ -50,6 +50,7 @@
       '<p class="hero__baseline">' + i.baseline + '</p>' +
       '<ul class="hero__services">' + i.services.map(function (s) { return '<li>' + s.t + '</li>'; }).join("") + '</ul>' +
       '<div class="hero__cta"><a class="btn btn--gold" href="#contact">Prendre rendez-vous</a><a class="btn btn--on-dark" href="tel:' + i.phoneIntl + '">Appeler</a></div>' +
+      '<ul class="hero__trust">' + (i.trust || []).map(function (t) { return '<li>' + t + '</li>'; }).join("") + '</ul>' +
     '</div>';
 
   /* ---------- ATELIER (savoir-faire, split photo + texte, no-scroll) ---------- */
@@ -181,7 +182,7 @@
   function setTheme(t) { document.documentElement.setAttribute("data-theme", t); if (tbtn) tbtn.innerHTML = (t === "dark") ? SUN : MOON; }
   var saved; try { saved = localStorage.getItem("cp-theme"); } catch (e) {}
   setTheme(saved || "light"); // défaut = identité du site (clair) ; toggle + localStorage pour l'autre
-  if (tbtn) tbtn.addEventListener("click", function () { var nt = (document.documentElement.getAttribute("data-theme") === "dark") ? "light" : "dark"; setTheme(nt); try { localStorage.setItem("cp-theme", nt); } catch (e) {} });
+  if (tbtn) tbtn.addEventListener("click", function () { var nt = (document.documentElement.getAttribute("data-theme") === "dark") ? "light" : "dark"; var el = document.documentElement; el.classList.add("theme-anim"); setTheme(nt); try { localStorage.setItem("cp-theme", nt); } catch (e) {} window.setTimeout(function () { el.classList.remove("theme-anim"); }, 500); });
 
   /* init */
   showView(currentSlug());

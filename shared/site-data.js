@@ -30,6 +30,7 @@ window.SITE = {
       img: "https://images.pexels.com/photos/7167002/pexels-photo-7167002.jpeg?auto=compress&cs=tinysrgb&w=1200&h=800&fit=crop"
     },
     mapsQuery: "Colin Philippe Rue de Genève 71 1225 Chêne-Bourg",
+    trust: ["Fait main en atelier", "Or & argent 18 ct", "Depuis 1990", "Devis gratuit"],
     services: [
       { t: "Création à la main", d: "Pièces uniques façonnées dans l'atelier, sur-mesure." },
       { t: "Changement de pile", d: "Remplacement rapide, en boutique, toutes marques." },
