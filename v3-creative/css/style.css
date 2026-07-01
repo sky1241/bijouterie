@@ -24,8 +24,8 @@
   --overlay-bg: #14100A;     /* fond du menu plein écran — suit le thème */
 
   /* typo (mêmes familles, échelle plus éditoriale) */
-  --font-display: "Playfair Display", "Iowan Old Style", Georgia, serif;
-  --font-body: "Raleway", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Bodoni Moda", "Iowan Old Style", Georgia, serif;
+  --font-body: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --fs-display: clamp(2.75rem, 1.6rem + 4.6vw, 5.5rem);
   --fs-h1: clamp(2rem, 1.4rem + 2.4vw, 3.25rem);
   --fs-h2: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem);
@@ -187,6 +187,7 @@ h1,h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-heig
 .piece__spec { font-size: var(--fs-caption); color: var(--ink-soft); margin-top: 3px; }
 .piece__price { font-size: var(--fs-small); font-weight: var(--fw-semibold); color: var(--gold-strong); margin-top: auto; padding-top: var(--space-2); } /* prix collé en bas → aligné (bible §Equal-Height Cards) */
 .cat-grid { min-height: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: clamp(.6rem, 1.2vw, 1rem); }
+.cat-grid .piece__cap { height: 6rem; overflow: hidden; } /* hauteur FIXE → images de la grille alignées */
 .cat-grid .piece__name { font-size: .95rem; min-height: 2.3em; } /* 2 lignes réservées → prix aligné dans la grille */
 .piece--featured .piece__name { font-size: 1.5rem; }
 .piece--featured .piece__cap { padding: var(--space-4) var(--space-5) var(--space-5); }
@@ -239,7 +240,7 @@ h1,h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-heig
   .cat-stage { grid-template-columns: 1fr; grid-template-rows: 1.15fr 1fr; }
   .piece--featured .piece__name { font-size: 1.15rem; }
   .cat-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
-  .cat-grid .piece__cap { padding: var(--space-2) var(--space-3) var(--space-3); min-height: 0; }
+  .cat-grid .piece__cap { padding: var(--space-2) var(--space-3) var(--space-3); min-height: 0; height: auto; }
   .cat-grid .piece__spec { display: none; }
   .cat-grid .piece__price { margin-top: var(--space-1); padding-top: 0; }
   .piece--featured .piece__cap { min-height: 0; }

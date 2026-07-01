@@ -44,7 +44,7 @@
   /* ---------- ACCUEIL (hero) ---------- */
   document.getElementById("view-home").innerHTML =
     '<div class="hero">' +
-      '<div class="hero__bg"><img src="' + S.heroImg + '" alt="Atelier de bijouterie — Colin Philippe" fetchpriority="high"></div>' +
+      '<div class="hero__bg"><img src="https://images.pexels.com/photos/29043373/pexels-photo-29043373.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop" alt="Bijou en or — Colin Philippe" fetchpriority="high"></div>' +
       '<p class="hero__eyebrow">Depuis ' + i.since + ' · Chêne-Bourg</p>' +
       '<h1 class="hero__title">' + i.name + '</h1>' +
       '<p class="hero__baseline">' + i.baseline + '</p>' +
