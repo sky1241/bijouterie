@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Colin Philippe — Bijouterie-Horlogerie · Chêne-Bourg (Genève)</title>
+  <meta name="description" content="Colin Philippe, bijouterie-horlogerie à Chêne-Bourg depuis 1990. Création de bijoux à la main, colliers, bracelets, bagues, boucles d'oreilles, montres. Changement de pile, bracelets, réparation.">
+  <meta name="theme-color" content="#17130E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JewelryStore",
+    "name": "Colin Philippe — Bijouterie-Horlogerie",
+    "founder": "Philippe Colin",
+    "foundingDate": "1990",
+    "telephone": "+41223487580",
+    "address": { "@type": "PostalAddress", "streetAddress": "Rue de Genève 71", "postalCode": "1225", "addressLocality": "Chêne-Bourg", "addressRegion": "GE", "addressCountry": "CH" },
+    "openingHours": ["Mo-Fr 10:00-19:00", "Sa 09:00-18:00"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Colin Philippe — accueil">
+      <span class="brand__name">Colin Philippe</span>
+      <span class="brand__sub">Bijouterie · Horlogerie</span>
+    </a>
+    <button class="menu-btn" id="menu-open" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="overlay">Menu <span class="bars"></span></button>
+  </header>
+
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+    <div class="overlay__top">
+      <span class="brand__name">Colin Philippe</span>
+      <button class="overlay__close" id="menu-close" aria-label="Fermer le menu">&times;</button>
+    </div>
+    <nav class="overlay__nav" id="ov-nav" aria-label="Navigation principale"></nav>
+    <div class="overlay__foot" id="ov-foot"></div>
+  </div>
+
+  <main class="views" id="main">
+    <section class="view view--home is-active" id="view-home" aria-label="Accueil"></section>
+    <div id="category-views"></div>
+    <section class="view view--pad view--avis" id="view-avis" aria-label="Avis clients"></section>
+    <section class="view view--pad view--contact" id="view-contact" aria-label="Contact"></section>
+  </main>
+
+  <script src="../shared/site-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
