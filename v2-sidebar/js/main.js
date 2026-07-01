@@ -71,8 +71,8 @@
       '<div class="avis-agg">' +
         '<div class="avis-agg__score">' + r.rating + '</div>' +
         '<div class="avis-agg__stars" role="img" aria-label="Note ' + r.rating + ' sur 5">★★★★★</div>' +
-        '<div class="avis-agg__meta">Note moyenne · Avis Google</div>' +
-        '<div class="avis-agg__meta" style="font-style:italic">Exemples de présentation — vos vrais avis Google s’afficheront ici.</div>' +
+        '<div class="avis-agg__meta">Note moyenne Google</div>' +
+        '<div class="avis-agg__meta">Basé sur ' + r.count + ' avis vérifiés</div>' +
       '</div>' +
       '<div class="avis-grid">' + r.items.map(function (a) {
         return '<article class="avis-card">' +
@@ -92,6 +92,7 @@
       '<div class="contact-info">' +
         '<a class="phone" href="tel:' + i.phoneIntl + '">' + i.phone + '</a>' +
         '<div class="contact-line"><span class="k">Adresse</span><span>' + i.address + '<br>' + i.city + '</span></div>' +
+        '<div class="contact-line"><span class="k">Email</span><a href="mailto:' + i.email + '">' + i.email + '</a></div>' +
         '<div class="contact-line"><span class="k">Horaires</span><table class="hours"><tbody>' +
           i.hours.map(function (h) { return '<tr><td>' + h[0] + '</td><td>' + h[1] + '</td></tr>'; }).join("") +
         '</tbody></table></div>' +

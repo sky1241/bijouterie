@@ -15,6 +15,7 @@ window.SITE = {
     city: "1225 Chêne-Bourg · Genève",
     phone: "022 348 75 80",
     phoneIntl: "+41223487580",
+    email: "bijouteriecolin@hotmail.fr",
     hours: [
       ["Lundi – Vendredi", "10h00 – 19h00"],
       ["Samedi", "9h00 – 18h00"],
@@ -70,14 +71,14 @@ window.SITE = {
 
   /* ⚠️ EXEMPLES — remplacer par les vrais avis Google (non scrapables). */
   reviews: {
-    rating: "4,9",
-    count: null,           // nb réel inconnu → non affiché tant que non fourni
-    placeholder: true,
+    rating: "5,0",
+    count: 11,
+    placeholder: false,     // VRAIS avis Google (récupérés manuellement par Sky)
     items: [
-      { author: "Sophie M.", stars: 5, text: "Accueil exceptionnel et de vrais conseils. Mon collier sur-mesure dépasse tout ce que j'imaginais.", ago: "il y a 2 semaines" },
-      { author: "Jean-Pierre R.", stars: 5, text: "Ma femme était émue en ouvrant l'écrin. Un savoir-faire rare et un artisan à l'écoute.", ago: "il y a 1 mois" },
-      { author: "Laurence B.", stars: 4, text: "Très belle boutique, pièces magnifiques. Un léger délai sur ma commande, mais le résultat en valait la peine.", ago: "il y a 3 mois" },
-      { author: "Marc & Élodie", stars: 5, text: "Réparation de ma montre ancienne impeccable. Prix honnête, travail soigné.", ago: "il y a 2 mois" }
+      { author: "Nils Engelberts", stars: 5, text: "Horloger bijoutier très aimable, très chaleureux. Très professionnel. Joli intérieur du magasin. Je recommande à 100% 🤗", ago: "il y a 7 mois" },
+      { author: "Michèle Perroud", stars: 5, text: "Monsieur Colin est un magicien ! Il trouve toujours une solution pour satisfaire sa clientèle. Il aime son métier et ça se voit dans ses très belles créations. Je lui fais confiance à 200%.", ago: "il y a 2 ans" },
+      { author: "Benjamin Huerta", stars: 5, text: "Accueillant, à l'écoute et très professionnel ! Une perle qui fait vivre l'art de la bijouterie avec finesse et passion. Je recommande vivement.", ago: "il y a 1 an" },
+      { author: "William Weil", stars: 5, text: "Un véritable artiste bijoutier, création et travail d'exception. Rare de nos jours.", ago: "il y a 7 ans" }
     ]
   },
 

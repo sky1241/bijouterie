@@ -98,9 +98,9 @@ Note moyenne : `[[note réelle à récupérer sur Google Maps — non scrapable 
 5. **Laurence B.** ★★★★☆ — « Très belle boutique, pièces magnifiques. Un léger délai mais ça en valait la peine. » · *il y a 3 mois*
 6. **Thomas V.** ★★★★★ — « Changement de pile et révision rapides, accueil au top. Je recommande. » · *il y a 4 mois*
 
-> ⚠️ Ces avis sont des EXEMPLES (placeholder design). L'agent n'a **pas** pu récupérer les vrais
-> (Google Maps bloque le scraping, rendu JS). **Action : copier les vrais avis + la note depuis la
-> fiche Google Maps « Colin Philippe Chêne-Bourg », ou Sky me les donne.** Pas de faux avis en prod.
+> ✅ VRAIS avis Google intégrés (fournis par Sky). **Note 5,0 · 11 avis.** Affichés : Nils Engelberts,
+> Michèle Perroud, Benjamin Huerta, William Weil. Réserve : hervé Stussi, Dario D'Orlando, Antoine Chevalier.
+> Schema.org AggregateRating + Review ajouté sur les 3 sites (étoiles Google en résultats de recherche).
 
 ---
 
@@ -120,7 +120,7 @@ Note moyenne : `[[note réelle à récupérer sur Google Maps — non scrapable 
 
 - **Adresse** : **Rue de Genève 71, 1225 Chêne-Bourg (GE), Suisse** ✅
 - **Téléphone** : **022 348 75 80** (+41 22 348 75 80) ✅ *(vérifié 4+ sources)*
-- **Email** : *aucun email public* — pas de présence web (c'est bien pourquoi on fait ce site)
+- **Email** : **bijouteriecolin@hotmail.fr** ✅
 - **Site existant** : *aucun* ✅ — terrain vierge
 - **Horaires** : Lu–Ve 10h00–19h00 · Sa 9h00–18h00 · Di fermé — ⚠️ *1 seule source, À FAIRE CONFIRMER par Philippe avant mise en ligne*
 - **Titulaire** : Philippe Colin — raison sociale « Bijouterie-Horlogerie, Philippe Colin » (ind., depuis 1990, IDE CHE-103.242.824)
