@@ -20,6 +20,12 @@
   function initials(name) {
     return name.split(/\s+/).map(function (w) { return w.charAt(0); }).join("").slice(0, 2).toUpperCase();
   }
+  function countUp(el, target, reduce) {
+    if (reduce || !window.requestAnimationFrame) { el.textContent = target.toFixed(1).replace(".", ","); return; }
+    var t0 = null, dur = 1000;
+    function step(ts) { if (t0 === null) t0 = ts; var p = Math.min((ts - t0) / dur, 1); el.textContent = (target * (1 - Math.pow(1 - p, 3))).toFixed(1).replace(".", ","); if (p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
 
   /* ---------- NAV ---------- */
   var navItems = [{ slug: "home", label: "Accueil" }]
@@ -89,10 +95,14 @@
     function dots() { var h = ""; for (var d = 0; d < list.length; d++) h += '<button class="avis-dot' + (d === start ? " is-on" : "") + '" data-i="' + d + '" aria-label="Avis ' + (d + 1) + '"></button>'; dotsW.innerHTML = h; }
     function paint(fade) { if (fade) { grid.style.opacity = "0"; setTimeout(function () { grid.innerHTML = win().map(avisCard).join(""); grid.style.opacity = "1"; dots(); }, 200); } else { grid.innerHTML = win().map(avisCard).join(""); dots(); } }
     function go(dir) { start = (start + dir + list.length) % list.length; paint(true); }
-    function auto() { if (timer) clearInterval(timer); timer = setInterval(function () { go(1); }, 5000); }
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function auto() { stop(); if (reduce) return; timer = setInterval(function () { go(1); }, 5000); }
     document.querySelectorAll(".avis-nav").forEach(function (b) { b.addEventListener("click", function () { go(+b.dataset.dir); auto(); }); });
     dotsW.addEventListener("click", function (e) { var b = e.target.closest(".avis-dot"); if (b) { start = +b.dataset.i; paint(true); auto(); } });
-    var car = document.querySelector(".avis-carousel"); car.addEventListener("mouseenter", function () { if (timer) clearInterval(timer); }); car.addEventListener("mouseleave", auto);
+    var car = document.querySelector(".avis-carousel");
+    car.addEventListener("mouseenter", stop); car.addEventListener("mouseleave", auto);
+    car.addEventListener("focusin", stop); car.addEventListener("focusout", auto); /* a11y : pause au clavier (WCAG 2.2.2) */
     window.addEventListener("resize", function () { paint(false); });
     paint(false); auto();
   })();
@@ -129,6 +139,7 @@
     views.forEach(function (v) { v.classList.toggle("is-active", v.id === "view-" + slug); });
     links.forEach(function (a) { if (a.getAttribute("data-view") === slug) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
     document.title = (slug === "home") ? "Colin Philippe — Bijouterie-Horlogerie · Chêne-Bourg" : (labelFor(slug) + " · Colin Philippe");
+    if (slug === "avis") { var sc = document.querySelector(".avis-agg__score"); if (sc) countUp(sc, parseFloat(r.rating.replace(",", ".")), window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
     closeMenu();
   }
   window.addEventListener("hashchange", function () { showView(currentSlug()); });
