@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Colin Philippe — Bijouterie-Horlogerie · Chêne-Bourg (Genève)</title>
+  <meta name="description" content="Colin Philippe, bijouterie-horlogerie à Chêne-Bourg depuis 1990. Création de bijoux à la main : colliers, bracelets, bagues, boucles d'oreilles, montres. Changement de pile, bracelets, réparation.">
+  <meta name="theme-color" content="#FAF6EE">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Données structurées : PAS d'avis/note (les vrais ne sont pas encore connus, on ne publie pas de faux). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JewelryStore",
+    "name": "Colin Philippe — Bijouterie-Horlogerie",
+    "founder": "Philippe Colin",
+    "foundingDate": "1990",
+    "telephone": "+41223487580",
+    "address": { "@type": "PostalAddress", "streetAddress": "Rue de Genève 71", "postalCode": "1225", "addressLocality": "Chêne-Bourg", "addressRegion": "GE", "addressCountry": "CH" },
+    "openingHours": ["Mo-Fr 10:00-19:00", "Sa 09:00-18:00"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <div class="mobile-bar">
+    <a class="brand" href="#home" aria-label="Colin Philippe — accueil">
+      <span class="brand__name">Colin Philippe</span>
+      <span class="brand__sub">Bijouterie · Horlogerie</span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="sidebar"><span></span></button>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar" aria-label="Navigation principale">
+      <a class="brand sidebar__brand" href="#home" aria-label="Colin Philippe — accueil">
+        <span class="brand__name">Colin Philippe</span>
+        <span class="brand__sub">Bijouterie · Horlogerie</span>
+      </a>
+      <nav class="sidebar__nav" id="site-nav"></nav>
+      <div class="sidebar__foot" id="sidebar-foot"></div>
+    </aside>
+
+    <main class="content views" id="main">
+      <section class="view view--home is-active" id="view-home" aria-label="Accueil"></section>
+      <div id="category-views"></div>
+      <section class="view view--pad" id="view-avis" aria-label="Avis clients"></section>
+      <section class="view view--pad" id="view-contact" aria-label="Contact"></section>
+    </main>
+  </div>
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+  <script src="../shared/site-data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
