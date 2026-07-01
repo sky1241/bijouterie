@@ -76,7 +76,7 @@ window.SITE = {
     items: [
       { author: "Sophie M.", stars: 5, text: "Accueil exceptionnel et de vrais conseils. Mon collier sur-mesure dépasse tout ce que j'imaginais.", ago: "il y a 2 semaines" },
       { author: "Jean-Pierre R.", stars: 5, text: "Ma femme était émue en ouvrant l'écrin. Un savoir-faire rare et un artisan à l'écoute.", ago: "il y a 1 mois" },
-      { author: "Camille D.", stars: 5, text: "Nos alliances ont été créées à la main. Élégantes, uniques, suivi parfait.", ago: "il y a 1 mois" },
+      { author: "Laurence B.", stars: 4, text: "Très belle boutique, pièces magnifiques. Un léger délai sur ma commande, mais le résultat en valait la peine.", ago: "il y a 3 mois" },
       { author: "Marc & Élodie", stars: 5, text: "Réparation de ma montre ancienne impeccable. Prix honnête, travail soigné.", ago: "il y a 2 mois" }
     ]
   },
