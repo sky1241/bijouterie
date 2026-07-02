@@ -523,3 +523,14 @@ h1,h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-heig
   .rel__price { font-size: 11px; }
   .product__related-title { display: block; }
 }
+
+/* FIX images catégorie écrasées (~21px de haut) : sur mobile, rangées en hauteur NATURELLE
+   + image à hauteur réelle (fini le flex qui la réduit à une lamelle). La vue scrolle si besoin (adaptatif). */
+@media (max-width: 767px) {
+  .cat-stage { flex: 0 0 auto; grid-template-rows: auto auto; }
+  .cat-grid { grid-template-rows: auto auto; }
+  .piece__media { flex: 0 0 auto; }
+  .cat-grid .piece__media { height: clamp(92px, 27vw, 122px); }
+  .piece--featured .piece__media { height: clamp(150px, 42vw, 215px); }
+  .piece__cap { min-height: 0; height: auto; }
+}
