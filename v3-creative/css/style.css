@@ -299,6 +299,11 @@ h1,h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-heig
 .avis-card__badge { position: absolute; top: var(--space-3); right: var(--space-3); font-size: 9px; letter-spacing: .12em; text-transform: uppercase; font-weight: var(--fw-bold); color: var(--on-gold); background: var(--gold); padding: 3px 7px; border-radius: var(--radius-pill); }
 .avis-card__text { display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 @media (max-width: 767px) { .avis-carousel { max-width: 100%; } .avis-carousel .avis-card { flex: 1 1 100%; } .avis-nav { width: 38px; height: 38px; } }
+/* Mobile : le bouton thème passe DANS la topbar (fini le flottant qui recouvrait le contenu — texte « estimation », coins de cartes). Le bouton Menu devient icône seule (☰) pour libérer la place. */
+@media (max-width: 767px) {
+  .theme-toggle { position: static; inset: auto; bottom: auto; right: auto; width: 40px; height: 40px; margin-left: auto; flex: 0 0 auto; }
+  .menu-btn { font-size: 0; gap: 0; margin-left: var(--space-4); min-width: 44px; justify-content: flex-end; }
+}
 
 /* ---------- CONTACT ---------- */
 .view--contact { justify-content: safe center; }
