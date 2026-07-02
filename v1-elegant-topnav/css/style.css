@@ -376,7 +376,8 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
 /* 9 items sur la barre haute → hamburger relevé à 1040px pour éviter le débordement */
 @media (max-width: 1040px) {
   /* FIX menu mort : backdrop-filter établit un bloc conteneur qui clippait le drawer position:fixed à la hauteur du header (~64px). On le retire là où la nav devient un drawer fixe. Le fond rgba(.9) suffit. */
-  .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  /* FIX clics menu : .site-header est un flex-item avec z-index -> il crée un contexte d'empilement (z:10) qui PIÉGEAIT le drawer SOUS le backdrop (z:40, enfant de body). On remonte le header au-dessus du backdrop pour que les liens du drawer reçoivent les clics. */
+  .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; z-index: calc(var(--z-backdrop) + 5); }
   .site-nav {
     position: fixed; inset: 0 0 0 auto; width: min(78vw, 320px); z-index: var(--z-drawer);
     flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0;
