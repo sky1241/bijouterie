@@ -178,6 +178,11 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
 .nav-link:hover::after, .nav-link[aria-current="page"]::after { transform: scaleX(1); }
 .nav-link[aria-current="page"] { color: var(--color-gold-strong); }
 @media (pointer: coarse) { .nav-link { min-height: 44px; } } /* cible tactile ≥44px (WEB.md §target-size) */
+/* Tablette / petit laptop (841–1100px) : on resserre gap + onglets pour que les 9 tiennent en HORIZONTAL (au lieu de passer en hamburger trop tôt) */
+@media (min-width: 841px) and (max-width: 1100px) {
+  .site-nav { gap: clamp(.1rem, .5vw, .55rem); }
+  .nav-link { font-size: .8rem; padding: var(--space-2) 3px; letter-spacing: 0; }
+}
 
 .nav-toggle {
   display: none; width: 44px; height: 44px; border: 1px solid var(--color-border-strong);
@@ -422,8 +427,8 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
 .view.is-active .rel-card:nth-child(5){ transition-delay: .56s; }
 
 /* ------------------------------ RESPONSIVE ------------------------------ */
-/* 9 items sur la barre haute → hamburger relevé à 1040px pour éviter le débordement */
-@media (max-width: 1040px) {
+/* 9 items sur la barre haute → hamburger sous 840px seulement ; entre 841 et 1100px on compacte la nav (voir bloc plus haut) pour la garder HORIZONTALE sur tablette/petit laptop */
+@media (max-width: 840px) {
   /* FIX menu mort : backdrop-filter établit un bloc conteneur qui clippait le drawer position:fixed à la hauteur du header (~64px). On le retire là où la nav devient un drawer fixe. Le fond rgba(.9) suffit. */
   /* FIX clics menu : .site-header est un flex-item avec z-index -> il crée un contexte d'empilement (z:10) qui PIÉGEAIT le drawer SOUS le backdrop (z:40, enfant de body). On remonte le header au-dessus du backdrop pour que les liens du drawer reçoivent les clics. */
   .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; z-index: calc(var(--z-backdrop) + 5); }
