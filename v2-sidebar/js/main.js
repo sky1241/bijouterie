@@ -132,8 +132,7 @@
     paint(false); auto();
   })();
 
-  /* ---------- CONTACT ---------- */
-  var mapsEmbed = "https://maps.google.com/maps?q=" + encodeURIComponent(i.mapsQuery) + "&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  /* ---------- CONTACT (panneau infos + formulaire mailto · sans iframe/tracking RGPD) ---------- */
   var mapsLink = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(i.mapsQuery);
   document.getElementById("view-contact").innerHTML =
     '<div class="view-head"><p class="eyebrow">Nous trouver</p><h1>Contact</h1><div class="rule"></div></div>' +
@@ -146,13 +145,38 @@
           i.hours.map(function (h) { return '<tr><td>' + h[0] + '</td><td>' + h[1] + '</td></tr>'; }).join("") +
         '</tbody></table></div>' +
         '<p class="contact-note">' + i.hoursNote + '</p>' +
-        '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">' +
+        '<div class="contact-actions">' +
           '<a class="btn btn--gold" href="tel:' + i.phoneIntl + '">Appeler</a>' +
           '<a class="btn btn--ghost" href="' + mapsLink + '" target="_blank" rel="noopener">Itinéraire</a>' +
         '</div>' +
       '</div>' +
-      '<div class="contact-map"><iframe title="Carte — ' + i.address + ', ' + i.city + '" src="' + mapsEmbed + '" loading="lazy"></iframe></div>' +
+      '<form class="contact-form" id="contact-form">' +
+        '<p class="contact-form__title">Nous écrire</p>' +
+        '<div class="field"><label for="cf-nom">Nom</label><input id="cf-nom" name="nom" type="text" autocomplete="name" required></div>' +
+        '<div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>' +
+        '<div class="field"><label for="cf-tel">Téléphone</label><input id="cf-tel" name="tel" type="tel" autocomplete="tel"></div>' +
+        '<div class="field field--msg"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="3" required></textarea></div>' +
+        '<button class="btn btn--gold contact-form__send" type="submit">Envoyer</button>' +
+      '</form>' +
+    '</div>' +
+    '<div class="contact-legal">' +
+      '<a href="../mentions-legales.html">Mentions légales</a>' +
+      '<span class="contact-legal__sep" aria-hidden="true">·</span>' +
+      '<a href="../confidentialite.html">Confidentialité</a>' +
     '</div>';
+
+  /* Formulaire → mailto (zéro backend, zéro tracking). Validation native (required), puis compose l'email. */
+  (function () {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var nom = form.nom.value.trim(), email = form.email.value.trim(), tel = form.tel.value.trim(), msg = form.message.value.trim();
+      var subject = "Contact site — " + (nom || "message");
+      var body = "Nom : " + nom + "\nEmail : " + email + "\nTéléphone : " + tel + "\n\n" + msg;
+      window.location.href = "mailto:" + i.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  })();
 
   /* ---------- NAVIGATION DE VUES (zéro scroll) ---------- */
   var validSlugs = navItems.map(function (n) { return n.slug; });

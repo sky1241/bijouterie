@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sky1241.github.io/philippe-colin-bijouterie/sitemap.xml

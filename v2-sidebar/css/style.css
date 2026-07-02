@@ -1,4 +1,52 @@
 /* =========================================================================
+   POLICES AUTO-HÉBERGÉES (RGPD) — sous-ensemble latin, servi localement.
+   Remplace le <link> Google Fonts : plus AUCUNE requête vers fonts.gstatic.com.
+   fraunces.woff2 (variable) sert 500/600/700 ; inter.woff2 (variable) sert 400→700 ;
+   fraunces-italic.woff2 = italic 500. font-family/weight/style/unicode-range =
+   miroir exact de css2 (rendu identique). Fichiers dans ../fonts/.
+   ========================================================================= */
+@font-face {
+  font-family: "Fraunces"; font-style: italic; font-weight: 500; font-display: swap;
+  src: url("../fonts/fraunces-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Fraunces"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("../fonts/fraunces.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Fraunces"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("../fonts/fraunces.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Fraunces"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("../fonts/fraunces.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("../fonts/inter.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("../fonts/inter.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("../fonts/inter.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("../fonts/inter.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* =========================================================================
    Colin Philippe — V2 « Rail latéral · palette PLATINE/PERLE FROIDE · ZÉRO défilement »
    Identité DISTINCTE de V1 (or chaud) : neutres perle froids + accent champagne/acier.
    Tokens = digest bible-ux (WEB.md §CP 60-30-10 / §22 contraste + VALUES.md).
@@ -294,8 +342,29 @@ a.avis-agg__meta:hover { color: var(--color-gold-strong); text-decoration-color:
 .hours td { padding: 3px 0; }
 .hours td:first-child { color: var(--color-ink-soft); padding-right: var(--space-6); }
 .contact-note { font-size: var(--fs-caption); color: var(--color-ink-soft); font-style: italic; }
-.contact-map { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border-subtle); min-height: 0; }
-.contact-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+.contact-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-2); }
+
+/* Formulaire « Nous écrire » → mailto (aligné à gauche = signature V2, colonne droite du grid) */
+.contact-form { display: flex; flex-direction: column; justify-content: center; gap: var(--space-3); min-height: 0; max-width: 44ch; }
+.contact-form__title { font-family: var(--font-display); font-style: italic; font-size: 1.2rem; color: var(--color-ink-soft); }
+.contact-form .field { display: flex; flex-direction: column; gap: 4px; }
+.contact-form label { font-size: var(--fs-caption); letter-spacing: .08em; text-transform: uppercase; font-weight: var(--fw-semibold); color: var(--color-gold-strong); }
+.contact-form input, .contact-form textarea {
+  width: 100%; font-family: var(--font-body); font-size: var(--fs-small); color: var(--color-ink);
+  background: var(--color-surface-1); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm);
+  padding: 10px var(--space-3); transition: border-color var(--dur-hover) var(--ease-out), box-shadow var(--dur-hover) var(--ease-out);
+}
+.contact-form input { height: 42px; }
+.contact-form textarea { min-height: 72px; resize: none; line-height: 1.45; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--color-ink-soft); }
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--color-gold); box-shadow: 0 0 0 3px var(--color-gold-soft); }
+.contact-form__send { align-self: flex-start; margin-top: var(--space-1); }
+
+/* Pied de vue contact : liens légaux (RGPD) */
+.contact-legal { flex: 0 0 auto; display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-3); padding-top: var(--space-3); border-top: 1px solid var(--color-border-subtle); font-size: var(--fs-caption); }
+.contact-legal a { color: var(--color-ink-soft); }
+.contact-legal a:hover { color: var(--color-gold-strong); text-decoration: underline; text-underline-offset: 3px; }
+.contact-legal__sep { color: var(--color-border-strong); }
 
 /* ------------------------------ VUE ATELIER (savoir-faire · split photo + texte) ------------------------------ */
 .view--atelier { justify-content: center; }
@@ -425,9 +494,14 @@ a.avis-agg__meta:hover { color: var(--color-gold-strong); text-decoration-color:
   .avis-grid { flex-wrap: wrap; }
   .avis-card { flex: 1 1 44%; padding: var(--space-4); }
   .avis-card__text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  /* Contact : 1 colonne, carte cachée (bouton Maps à la place) */
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-map { display: none; }
+  /* Contact : 1 colonne empilée (infos puis formulaire), compacté → zéro-scroll */
+  .contact-grid { grid-template-columns: 1fr; align-content: start; gap: var(--space-3); }
+  .contact-info { justify-content: flex-start; gap: var(--space-2); max-width: none; }
+  .contact-info .phone { display: none; }   /* redondant avec le CTA « Appeler » → on récupère la hauteur */
+  .contact-note { display: none; }          /* disclaimer « horaires à confirmer » masqué sur mobile (place) */
+  .contact-form { justify-content: flex-start; gap: var(--space-2); max-width: none; }
+  .contact-form textarea { min-height: 0; height: 50px; }
+  .contact-legal { margin-top: var(--space-2); padding-top: var(--space-2); }
   /* Atelier : photo en haut, texte dessous — tient sans scroll */
   .atelier-split { grid-template-columns: 1fr; grid-auto-rows: min-content; align-content: start; gap: clamp(.75rem, 2.5vh, 1.25rem); }
   /* photo plus basse → la 3e rangée des 6 points reste dans le champ à 360×640 (§3) */
@@ -491,7 +565,7 @@ a.avis-agg__meta:hover { color: var(--color-gold-strong); text-decoration-color:
 .view.is-active .hero__bg img { animation: kenburns 24s ease-out both; }
 @keyframes kenburns { from { transform: scale(1.05); } to { transform: scale(1.14); } }
 .hero__eyebrow, .hero__title, .hero__baseline, .hero__services, .hero__cta,
-.view-head, .product-card, .avis-agg, .avis-card, .contact-info, .contact-map,
+.view-head, .product-card, .avis-agg, .avis-card, .contact-info, .contact-form,
 .atelier-media, .atelier-body {
   opacity: 0; transform: translateY(28px) scale(.985);
   transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
@@ -504,7 +578,7 @@ a.avis-agg__meta:hover { color: var(--color-gold-strong); text-decoration-color:
 .view.is-active .view-head      { opacity:1; transform:none; transition-delay:.05s; }
 .view.is-active .avis-agg       { opacity:1; transform:none; transition-delay:.12s; }
 .view.is-active .contact-info   { opacity:1; transform:none; transition-delay:.12s; }
-.view.is-active .contact-map    { opacity:1; transform:none; transition-delay:.24s; }
+.view.is-active .contact-form   { opacity:1; transform:none; transition-delay:.24s; }
 .view.is-active .atelier-media  { opacity:1; transform:none; transition-delay:.10s; }
 .view.is-active .atelier-body   { opacity:1; transform:none; transition-delay:.22s; }
 .view.is-active .product-card, .view.is-active .avis-card { opacity:1; transform:none; }

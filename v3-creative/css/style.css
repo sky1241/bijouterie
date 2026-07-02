@@ -5,6 +5,32 @@
    Nav = menu plein écran immersif. Catégories = mise en page asymétrique.
    ========================================================================= */
 
+/* ===== Polices AUTO-HÉBERGÉES (RGPD : zéro appel à fonts.gstatic.com / googleapis.com) =====
+   Sous-ensemble latin, récupéré du CSS Google Fonts. Bodoni Moda + Work Sans sont des
+   fontes variables : un seul fichier couvre toute la plage de graisses (mêmes URL Google
+   pour 500/600/700/800 et 400/500/600/700). Plage EXACTE de Google → rendu identique. */
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url("../fonts/bodoni-moda-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Bodoni Moda";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/bodoni-moda-italic-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/work-sans-latin.woff2") format("woff2");
+}
+
 :root {
   /* near-black CHAUD (distinct des V1/V2) — jamais #000 pur */
   --bg: #191410;
@@ -283,8 +309,31 @@ h1,h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-heig
 .hours { border-collapse: collapse; font-size: var(--fs-small); }
 .hours td { padding: 3px 0; } .hours td:first-child { color: var(--ink-soft); padding-right: var(--space-6); }
 .contact-note { font-size: var(--fs-caption); color: var(--ink-soft); font-style: italic; }
-.contact-map { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); height: min(60vh, 420px); }
-.contact-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(.2) contrast(.95) brightness(.95); }
+.contact-actions { display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: var(--space-1); }
+.contact-legal { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; font-size: var(--fs-caption); color: var(--ink-soft); margin-top: var(--space-1); }
+.contact-legal a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--border); transition: color var(--dur-hover) var(--ease-out), text-decoration-color var(--dur-hover) var(--ease-out); }
+.contact-legal a:hover { color: var(--gold-strong); text-decoration-color: var(--gold-strong); }
+
+/* formulaire « Nous écrire » — mailto, zéro backend, remplace l'iframe Maps */
+.contact-form {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3) var(--space-4); align-content: center;
+  background: var(--surface-1); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: clamp(1rem, 2.6vh, 1.75rem);
+}
+.contact-form .kicker { grid-column: 1 / -1; font-size: var(--fs-caption); letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--gold-strong); }
+.field { display: flex; flex-direction: column; gap: var(--space-1); min-width: 0; }
+.field--full { grid-column: 1 / -1; }
+.field label { font-size: var(--fs-caption); text-transform: uppercase; letter-spacing: .1em; color: var(--ink-soft); }
+.field input, .field textarea {
+  font-family: var(--font-body); font-size: var(--fs-small); color: var(--ink);
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3); min-height: 44px; width: 100%;
+  transition: border-color var(--dur-hover) var(--ease-out);
+}
+.field textarea { min-height: 0; resize: none; line-height: 1.5; }
+.field input:hover, .field textarea:hover { border-color: var(--ink-soft); }
+.field input:focus-visible, .field textarea:focus-visible { outline: none; border-color: var(--gold); }
+.contact-form button[type="submit"] { grid-column: 1 / -1; width: 100%; margin-top: var(--space-1); }
 
 /* ---------- ATELIER (savoir-faire : split photo + texte éditorial) ---------- */
 /* lisible dans les DEUX thèmes : uniquement des tokens (--ink/--bg/--surface-1/--border/--gold-strong) */
@@ -322,8 +371,13 @@ h1,h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-heig
   .avis-grid { flex-wrap: wrap; }
   .avis-card { flex: 1 1 44%; }
   .avis-card:nth-child(n+3) { display: none; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-map { display: none; }
+  /* contact mobile : info compacte au-dessus du formulaire, tout dans 100dvh sans scroll */
+  .view--contact { justify-content: flex-start; }
+  .contact-grid { grid-template-columns: 1fr; gap: var(--space-4); align-content: start; }
+  .contact-info { gap: var(--space-2); max-width: none; }
+  .contact-info .phone { font-size: 1.55rem; }
+  .contact-note { display: none; }               /* note « horaires à confirmer » — superflue sur mobile */
+  .contact-form { padding: var(--space-4); gap: var(--space-2) var(--space-3); }
   .view--atelier { justify-content: flex-start; }
   .atelier-grid { grid-template-columns: 1fr; align-content: start; gap: clamp(.7rem, 2vh, 1.15rem); }
   .atelier-media { height: clamp(110px, 18vh, 160px); max-height: none; }
@@ -365,7 +419,7 @@ h1,h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-heig
 .view.is-active .hero__bg img { animation: kenburns 26s ease-out both; }
 @keyframes kenburns { from { transform: scale(1.06); } to { transform: scale(1.16); } }
 .hero__eyebrow, .hero__title, .hero__baseline, .hero__services, .hero__cta,
-.cat-head, .piece, .avis-agg, .avis-card, .contact-info, .contact-map, .atelier-media, .atelier-body {
+.cat-head, .piece, .avis-agg, .avis-card, .contact-info, .contact-form, .atelier-media, .atelier-body {
   opacity: 0; transform: translateY(30px) scale(.985);
   transition: opacity .65s var(--ease-out), transform .65s var(--ease-out);
 }
@@ -377,7 +431,7 @@ h1,h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-heig
 .view.is-active .cat-head       { opacity:1; transform:none; transition-delay:.05s; }
 .view.is-active .avis-agg       { opacity:1; transform:none; transition-delay:.12s; }
 .view.is-active .contact-info   { opacity:1; transform:none; transition-delay:.12s; }
-.view.is-active .contact-map    { opacity:1; transform:none; transition-delay:.26s; }
+.view.is-active .contact-form   { opacity:1; transform:none; transition-delay:.26s; }
 .view.is-active .atelier-media  { opacity:1; transform:none; transition-delay:.1s; }
 .view.is-active .atelier-body   { opacity:1; transform:none; transition-delay:.22s; }
 .view.is-active .piece { opacity:1; transform:none; }

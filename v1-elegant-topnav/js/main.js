@@ -124,26 +124,57 @@
   })();
 
   /* ---------- CONTACT ---------- */
-  var mapsEmbed = "https://maps.google.com/maps?q=" + encodeURIComponent(i.mapsQuery) + "&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  /* Privacy : plus d'iframe Google Maps (tracking passif). L'adresse est un panneau
+     statique ; Google Maps ne s'ouvre QU'au clic sur « Itinéraire » (nouvel onglet). */
   var mapsLink = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(i.mapsQuery);
   document.getElementById("view-contact").innerHTML =
     '<div class="view-head"><p class="eyebrow">Nous trouver</p><h1>Contact</h1><div class="rule"></div></div>' +
     '<div class="contact-grid">' +
       '<div class="contact-info">' +
         '<a class="phone" href="tel:' + i.phoneIntl + '">' + i.phone + '</a>' +
-        '<div class="contact-line"><span class="k">Adresse</span><span>' + i.address + '<br>' + i.city + '</span></div>' +
         '<div class="contact-line"><span class="k">Email</span><a href="mailto:' + i.email + '">' + i.email + '</a></div>' +
         '<div class="contact-line"><span class="k">Horaires</span><table class="hours"><tbody>' +
           i.hours.map(function (h) { return '<tr><td>' + h[0] + '</td><td>' + h[1] + '</td></tr>'; }).join("") +
         '</tbody></table></div>' +
         '<p class="contact-note">' + i.hoursNote + '</p>' +
-        '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">' +
-          '<a class="btn btn--gold" href="tel:' + i.phoneIntl + '">Appeler</a>' +
+        '<div class="contact-map">' +
+          '<span class="contact-map__pin" aria-hidden="true">📍</span>' +
+          '<div class="contact-map__body">' +
+            '<span class="k">Adresse</span>' +
+            '<address class="contact-map__addr">' + i.address + '<br>' + i.city + '</address>' +
+          '</div>' +
           '<a class="btn btn--ghost" href="' + mapsLink + '" target="_blank" rel="noopener">Itinéraire</a>' +
         '</div>' +
       '</div>' +
-      '<div class="contact-map"><iframe title="Carte — ' + i.address + ', ' + i.city + '" src="' + mapsEmbed + '" loading="lazy"></iframe></div>' +
-    '</div>';
+      '<form class="contact-form" id="contact-form">' +
+        '<p class="contact-form__title serif">Nous écrire</p>' +
+        '<div class="field"><label for="cf-name">Nom</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>' +
+        '<div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>' +
+        '<div class="field"><label for="cf-phone">Téléphone</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel"></div>' +
+        '<div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" rows="3" required></textarea></div>' +
+        '<button class="btn btn--gold" type="submit">Envoyer</button>' +
+        '<p class="contact-form__note">Ouvre votre messagerie — aucun envoi ni stockage sur un serveur tiers.</p>' +
+      '</form>' +
+    '</div>' +
+    '<div class="contact-legal"><a href="../mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span><a href="../confidentialite.html">Confidentialité</a></div>';
+
+  /* Formulaire → mailto (zéro backend) : préremplit la messagerie du visiteur. */
+  var cform = document.getElementById("contact-form");
+  if (cform) cform.addEventListener("submit", function (e) {
+    e.preventDefault();
+    function val(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+    var body = [
+      "Nom : " + val("cf-name"),
+      "Email : " + val("cf-email"),
+      "Téléphone : " + val("cf-phone"),
+      "",
+      "Message :",
+      val("cf-msg")
+    ].join("\n");
+    window.location.href = "mailto:" + i.email +
+      "?subject=" + encodeURIComponent("Demande via le site") +
+      "&body=" + encodeURIComponent(body);
+  });
 
   /* ---------- NAVIGATION DE VUES (zéro scroll) ---------- */
   var validSlugs = navItems.map(function (n) { return n.slug; });

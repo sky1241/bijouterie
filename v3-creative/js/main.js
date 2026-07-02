@@ -121,8 +121,7 @@
     paint(false); auto();
   })();
 
-  /* ---- contact ---- */
-  var mapsEmbed = "https://maps.google.com/maps?q=" + encodeURIComponent(i.mapsQuery) + "&t=&z=15&ie=UTF8&iwloc=&output=embed";
+  /* ---- contact (panneau coordonnées + formulaire mailto — plus d'iframe Maps : zéro tracking) ---- */
   var mapsLink = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(i.mapsQuery);
   document.getElementById("view-contact").innerHTML =
     '<div class="contact-grid">' +
@@ -135,10 +134,30 @@
           i.hours.map(function (h) { return '<tr><td>' + h[0] + '</td><td>' + h[1] + '</td></tr>'; }).join("") +
         '</tbody></table></div>' +
         '<p class="contact-note">' + i.hoursNote + '</p>' +
-        '<div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn--gold" href="tel:' + i.phoneIntl + '">Appeler</a><a class="btn btn--outline" href="' + mapsLink + '" target="_blank" rel="noopener">Itinéraire</a></div>' +
+        '<div class="contact-actions"><a class="btn btn--gold" href="tel:' + i.phoneIntl + '">Appeler</a><a class="btn btn--outline" href="' + mapsLink + '" target="_blank" rel="noopener">Itinéraire</a></div>' +
+        '<p class="contact-legal"><a href="../mentions-legales.html">Mentions légales</a><span aria-hidden="true">·</span><a href="../confidentialite.html">Confidentialité</a></p>' +
       '</div>' +
-      '<div class="contact-map"><iframe title="Carte — ' + i.address + '" src="' + mapsEmbed + '" loading="lazy"></iframe></div>' +
+      '<form class="contact-form" id="contact-form" novalidate>' +
+        '<p class="kicker">Nous écrire</p>' +
+        '<div class="field"><label for="cf-nom">Nom</label><input id="cf-nom" name="nom" type="text" autocomplete="name" required></div>' +
+        '<div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>' +
+        '<div class="field field--full"><label for="cf-tel">Téléphone</label><input id="cf-tel" name="tel" type="tel" autocomplete="tel"></div>' +
+        '<div class="field field--full"><label for="cf-msg">Message</label><textarea id="cf-msg" name="msg" rows="3" required></textarea></div>' +
+        '<button class="btn btn--gold" type="submit">Envoyer</button>' +
+      '</form>' +
     '</div>';
+  (function () {
+    var form = document.getElementById("contact-form");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();                       /* zéro backend : on ouvre le client mail du visiteur */
+      var val = function (id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; };
+      var nom = val("cf-nom"), email = val("cf-email"), tel = val("cf-tel"), msg = val("cf-msg");
+      var subject = "Demande de contact — " + (nom || "site web");
+      var body = "Nom : " + nom + "\nEmail : " + email + "\nTéléphone : " + tel + "\n\n" + msg;
+      window.location.href = "mailto:" + i.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+    });
+  })();
 
   /* ---- navigation de vues (no-scroll) : 1 segment = vue · 2 segments = fiche produit ---- */
   var validSlugs = navItems.map(function (n) { return n.slug; });

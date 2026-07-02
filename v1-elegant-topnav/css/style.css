@@ -4,6 +4,33 @@
    Contrastes vérifiés WCAG AA (21/21 paires). Ne pas éditer les hex sans revérif.
    ========================================================================= */
 
+/* ------------------------------ POLICES (self-hosted · RGPD) ------------------------------
+   Sous-ensemble latin (accents FR) récupéré depuis Google Fonts, servi en local
+   (plus aucun appel à fonts.googleapis.com / fonts.gstatic.com). woff2 variables :
+   Cormorant Garamond normal = axe wght 300–700 · Montserrat normal = axe wght 100–900.
+   L'italique Cormorant est une instance statique (600). */
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/cormorant-garamond.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Cormorant Garamond";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/cormorant-garamond-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/montserrat.woff2") format("woff2");
+}
+
 /* ------------------------------ TOKENS ------------------------------ */
 :root {
   /* 60% dominante */
@@ -271,7 +298,7 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
 @media (max-width: 767px) { .avis-carousel { max-width: 100%; } .avis-carousel .avis-card { flex: 1 1 100%; } .avis-nav { width: 38px; height: 38px; } }
 
 /* ------------------------------ VUE CONTACT ------------------------------ */
-.contact-grid { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 3vw, 2.5rem); align-items: stretch; }
+.contact-grid { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(1rem, 3vw, 2.5rem); align-items: center; }
 .contact-info { display: flex; flex-direction: column; justify-content: center; gap: var(--space-4); max-width: 46ch; }
 .contact-info .phone { font-family: var(--font-display); font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem); font-weight: var(--fw-bold); color: var(--color-ink); }
 .contact-info .phone:hover { color: var(--color-gold-strong); }
@@ -281,8 +308,30 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
 .hours td { padding: 3px 0; }
 .hours td:first-child { color: var(--color-ink-soft); padding-right: var(--space-6); }
 .contact-note { font-size: var(--fs-caption); color: var(--color-ink-soft); font-style: italic; }
-.contact-map { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-border-subtle); min-height: 0; }
-.contact-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+/* Carte statique privacy-friendly (remplace l'iframe Google Maps — zéro tracking passif) */
+.contact-map { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); background: var(--color-surface-1); box-shadow: var(--shadow-sm); }
+.contact-map__pin { font-size: 1.4rem; line-height: 1; flex: 0 0 auto; }
+.contact-map__body { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.contact-map__addr { font-style: normal; font-size: var(--fs-small); color: var(--color-ink); line-height: 1.35; }
+.contact-map .btn { flex: 0 0 auto; }
+
+/* Formulaire « Nous écrire » → mailto (zéro backend, zéro tiers) */
+.contact-form { display: flex; flex-direction: column; justify-content: center; gap: var(--space-3); max-width: 42ch; width: 100%; }
+.contact-form__title { font-size: var(--fs-h3); font-weight: var(--fw-semibold); line-height: var(--lh-heading); }
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field label { font-size: var(--fs-caption); text-transform: uppercase; letter-spacing: var(--tracking-label); color: var(--color-gold-strong); font-weight: var(--fw-semibold); }
+.field input, .field textarea { font-family: var(--font-body); font-size: var(--fs-small); color: var(--color-ink); background: var(--color-surface-1); border: 1px solid var(--color-border-strong); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-3); width: 100%; transition: border-color var(--dur-hover) var(--ease-out); }
+.field input { min-height: 40px; }
+.field textarea { resize: vertical; min-height: 60px; line-height: 1.4; }
+.field input:focus-visible, .field textarea:focus-visible { border-color: var(--color-gold); }
+.contact-form .btn { align-self: flex-start; }
+.contact-form__note { font-size: var(--fs-caption); color: var(--color-ink-soft); font-style: italic; }
+
+/* Liens légaux — pied discret */
+.contact-legal { flex: 0 0 auto; margin-top: var(--space-3); font-size: var(--fs-caption); display: flex; gap: var(--space-3); justify-content: center; align-items: center; }
+.contact-legal a { color: var(--color-ink-soft); }
+.contact-legal a:hover { color: var(--color-gold-strong); text-decoration: underline; }
 
 /* ------------------------------ VUE ATELIER (savoir-faire · split) ------------------------------ */
 .atelier-grid { flex: 1 1 auto; min-height: 0; display: flex; align-items: center; gap: clamp(1.25rem, 3.5vw, 3rem); }
@@ -417,9 +466,17 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
   .avis-grid { flex-wrap: wrap; }
   .avis-card { flex: 1 1 44%; padding: var(--space-4); }
   .avis-card__text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  /* Contact : 1 colonne, carte cachée (bouton Maps à la place) */
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-map { display: none; }
+  /* Contact : 1 colonne empilée (coordonnées + carte statique, puis formulaire) — no-scroll */
+  .contact-grid { grid-template-columns: 1fr; gap: var(--space-3); align-items: stretch; align-content: center; }
+  .contact-info { max-width: none; gap: var(--space-2); }
+  .contact-note { display: none; }                 /* priorité no-scroll : la note reste visible sur desktop */
+  .contact-map { padding: var(--space-2) var(--space-3); }
+  .contact-form { max-width: none; gap: var(--space-2); }
+  .contact-form__title { font-size: var(--fs-body); }
+  .contact-form__note { display: none; }
+  .field { gap: 3px; }
+  .field input { min-height: 38px; }
+  .field textarea { min-height: 44px; height: 44px; }
   /* Atelier : empilé — photo compacte au-dessus, texte dessous (no-scroll) */
   .atelier-grid { flex-direction: column; align-items: stretch; justify-content: center; gap: clamp(.75rem, 2vh, 1.25rem); }
   .atelier-media { flex: 0 0 auto; align-self: stretch; height: clamp(120px, 20vh, 190px); }
@@ -484,7 +541,7 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
 .view.is-active .hero__bg img { animation: kenburns 24s ease-out both; }
 @keyframes kenburns { from { transform: scale(1.05); } to { transform: scale(1.14); } }
 .hero__eyebrow, .hero__title, .hero__baseline, .hero__services, .hero__cta,
-.view-head, .product-card, .avis-agg, .avis-card, .contact-info, .contact-map {
+.view-head, .product-card, .avis-agg, .avis-card, .contact-info, .contact-form {
   opacity: 0; transform: translateY(28px) scale(.985);
   transition: opacity .6s var(--ease-out), transform .6s var(--ease-out);
 }
@@ -496,7 +553,7 @@ h1, h2 { font-family: var(--font-display); font-weight: var(--fw-bold); line-hei
 .view.is-active .view-head      { opacity:1; transform:none; transition-delay:.05s; }
 .view.is-active .avis-agg       { opacity:1; transform:none; transition-delay:.12s; }
 .view.is-active .contact-info   { opacity:1; transform:none; transition-delay:.12s; }
-.view.is-active .contact-map    { opacity:1; transform:none; transition-delay:.24s; }
+.view.is-active .contact-form   { opacity:1; transform:none; transition-delay:.24s; }
 .view.is-active .product-card, .view.is-active .avis-card { opacity:1; transform:none; }
 .view.is-active .product-card:nth-child(1){ transition-delay:.16s; }
 .view.is-active .product-card:nth-child(2){ transition-delay:.24s; }
